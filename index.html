@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn Vue</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-on:input="changeTitle">
+    <p v-once>This is v-once : {{title}}</p>
+    <p>This is binding the value: {{title}}</p>
+    <p><a v-bind:href="link" target="_blank">Invoice Yourself in a easy way</a></p>
+    <p v-html="finishedLink"></p>
+
+
+    <button type="button" v-on:click="increase">Counter</button>
+    <p>{{counter}} is {{ output }}</p> <br>
+
+
+    <input type="text" v-on:keyup.enter.space="alertMe"><br/>
+    <button type="button" v-on:click="alertSomething">Alert</button><br/>
+    <input type="text" v-on:input="saveValue" placeholder="show value anytime"><br/>
+    <p v-once>{{myvalue}}</p><br/>
+    <input type="text" v-on:keydown.enter="saveValueOnlyEnter" placeholder="show value on enter only"><br/>
+    <p>{{myvalue}}</p><br/>
+    <input type="text" v-model="modelbind"> <br/>
+    <p>{{modelbind}}</p> <br/>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="js/index.js"></script>
+</body>
+</html>
