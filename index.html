@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment</title>
+</head>
+<body>
+<div id="exercise">
+    <div>
+        <p>Current Value: {{ value }}</p>
+        <button @click="value += 5">Add 5</button>
+        <button @click="value += 1">Add 1</button>
+        <p>{{ response }}</p>
+    </div>
+    <div>
+        <input type="text">
+        <p>{{ value }}</p>
+    </div>
+</div>
+<script src="https://npmcdn.com/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#exercise',
+        data: {
+            value: 0,
+            result : 'Initializing.... start adding'
+        },
+        computed: {
+            response: function () {
+                if (this.value === 37) {
+                    this.result = 'done!';
+                } else {
+                    this.result = 'Not there yet!';
+                }
+                return this.result;
+            }
+        },
+        watch: {
+            // it should be a defined variable in my case its result
+            value: function (value) {
+                var vm = this;
+                setTimeout(function () {
+                    vm.value = 0;
+                }, 5000);
+            }
+        }
+    });
+</script>
+</body>
+</html>
