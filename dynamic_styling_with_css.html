@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic styling with css classes</title>
+    <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background: grey;
+            display: inline-block;
+            margin: 10px;
+        }
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+        .blue {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="dynamic-styling">
+        <div class="demo" @click="attachRed = !attachRed" :class="{'red': attachRed}"></div>
+        <div class="demo" :class="color"></div>
+        <div class="demo" :style="{backgroundColor: typedColor}"></div>
+        <hr>
+        <input type="text" v-model="color">
+        <hr>
+        <hr>
+        <input type="text" v-model="typedColor">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="js/dynamic-styling.js"></script>
+</body>
+</html>
