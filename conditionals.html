@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p v-show="show">Do you see me?</p>
+    <p v-if="show">You can see me</p>
+    <p v-else>You can't see the if cause its not completely hidden or something its completely removed from DOM. F12 for more details.</p>
+    <!--template is a html5 element which doesn't renders into DOM-->
+    <template v-if="show">
+        <h1>This is my heading</h1>
+        <p>this is a paragraph!</p>
+    </template>
+    <button @click="show = !show">Toggle</button>
+    <ul>
+        <li v-for="(ing,i) in ingredients" :key="ing">{{ i+1 }}. {{ ing }}</li>
+    </ul>
+    <input type="text" v-model="typeItem" placeholder="type an item name to push it into the array">
+    <button @click="ingredients.push(typeItem)">Add</button>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="js/conditionals.js"></script>
+</body>
+</html>
