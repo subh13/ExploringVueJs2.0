@@ -17,3 +17,15 @@
     box-shadow: 10px 5px 5px rosybrown;
     background-color: white;
 }
+.progress-bar {
+    background: greenyellow;
+    height: 14%;
+    font-size: 20px;
+    border: none;
+    border-radius: 0px;
+    color: black;
+}
+.winner {
+    border: 5px solid green;
+    padding: 10px 9px 5px 9px;
+}

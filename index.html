@@ -9,30 +9,41 @@
 <body>
 <div id="monster" class="container">
     <div class="row">
-        <div class="col names">
+        <div class="col names" :class="{winner: winnerFlgYou}">
+            <img src="http://www.pngmart.com/files/5/Winner-PNG-Image.png" class="rounded" alt="winner cup" v-if="winnerFlgYou">
             <img src="https://img00.deviantart.net/1971/i/2014/054/5/d/anime_boy_render_by_aoikyou-d77pw4e.png" class="rounded" alt="Gamer You">
             <p>YOU</p>
-            <p>Progress Bar Here</p>
+            <div class="progress-bar" :style="{width: myLifePercentage+'%'}">{{ myLifePercentage }}%</div>
         </div>
-        <div class="col names">
+        <div class="col names" :class="{winner: winnerFlgMonster}">
+            <img src="http://www.pngmart.com/files/5/Winner-PNG-Image.png" class="rounded" alt="winner cup" v-if="winnerFlgMonster">
             <img src="https://www.wpclipart.com/cartoon/monsters/monsters_4/lizard_monster.png" class="rounded" alt="Monster">
             <p>MONSTER</p>
-            <p>Progress bar here</p>
+            <div class="progress-bar" :style="{width: monsterLifePercentage+'%'}">{{ monsterLifePercentage }}%</div>
         </div>
     </div>
     <hr>
     <div class="row attackzone">
         <div class="col">
-            <button type="button" class="btn btn-danger" @click="attack">Attack</button>
+            <button type="button" class="btn btn-danger" @click="attack" :disabled="winnerFlgYou || winnerFlgMonster">Attack</button>
         </div>
         <div class="col">
-            <button type="button" class="btn btn-warning" @click="specialAttack">Special Attack</button>
+            <button type="button" class="btn btn-warning" @click="specialAttack" :disabled="winnerFlgYou || winnerFlgMonster">Special Attack</button>
         </div>
         <div class="col">
-            <button type="button" class="btn btn-info" @click="healMe">Heal</button>
+            <button type="button" class="btn btn-info" @click="healMe" :disabled="winnerFlgYou || winnerFlgMonster || healCounter === 2">Heal</button>
         </div>
         <div class="col">
-            <button type="button" class="btn btn-dark" @click="giveUp">Give Up!</button>
+            <button type="button" class="btn btn-dark" @click="giveUp" :disabled="winnerFlgYou || winnerFlgMonster">Give Up!</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row logzone">
+        <button type="button" class="btn btn-info" @click="showHideLogs = !showHideLogs">Logs</button><br/>
+        <div v-show="showHideLogs">
+            <ul>
+                <li v-for="attack in attackLogs" :key="attack">{{attack}}</li>
+            </ul>
         </div>
     </div>
 </div>
