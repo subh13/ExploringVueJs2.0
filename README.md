@@ -58,4 +58,11 @@ thing which you actually wanna keep track of .
 so that in future whenevr you try to update any value,
 without hastle it works.
 ```
+```code
+ref: give full access to dom element 
+ <button type="button" v-on:click="increase" ref="counterButton">Counter</button>
+ this.$refs.counterButton.innerText refers to
+ Counter. So using ref also you can control
+ DOM elements.
+```
 

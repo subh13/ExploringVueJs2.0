@@ -33,6 +33,7 @@ new Vue({
        },
        alertSomething: function () {
            alert('hey this is an alert');
+           console.log(this.$refs.counterButton.innerText);
        },
        saveValue: function (event) {
            this.myvalue = event.target.value;
