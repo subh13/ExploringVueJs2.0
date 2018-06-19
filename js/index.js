@@ -1,5 +1,5 @@
-new Vue({
-   el: '#app',
+// vue instance #1
+var vm1 = new Vue({
    data: {
       title: 'Hello World!',
       link: 'https://www.invoicingyou.com',
@@ -43,3 +43,10 @@ new Vue({
        }
    }
 });
+vm1.$mount('#app');
+
+// vue instance #2
+var vm2 = new Vue({
+    template: '<h1>Nigga</h1>'
+});
+vm2.$mount('#app3');

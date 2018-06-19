@@ -65,4 +65,12 @@ ref: give full access to dom element
  Counter. So using ref also you can control
  DOM elements.
 ```
+```code
+$mount(): you can use it instead of el selector to pass the div
+id or class which is the selector of vue js.
+vm1.$mount('#app1');
+```
+```code
+Template tags has been used to render DOM element.
+```
 
