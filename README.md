@@ -73,4 +73,36 @@ vm1.$mount('#app1');
 ```code
 Template tags has been used to render DOM element.
 ```
+```code
+Vue.component('my-directive',{
+    template: '<p>this is a custom directive!</p>'
+});
+and in html file you just gotta write 
+
+<my-directive></my-directive>
+
+and tada! it's starts working.
+```
+```code
+vue js uses virtual dom which compares
+the actual DOM and virtual dom is any
+real change is there then only vue js 
+do something else it remains same.
+cause DOM manipaulation is slow tho js is
+fast.
+```
+<span style=color:red;>
+*vue js life cycle*
+</span>
+
+```code
+beforeCreate()
+created()
+beforeMount()
+mounted()
+beforeUpdate()
+updated()
+beforeDestroy()
+destroyed()
+```
 
