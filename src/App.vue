@@ -1,60 +1,52 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+  <div id="app" class="container">
+    <!--progress bar start-->
+    <div class="progress form-group">
+      <div class="progress-bar progress-bar-striped " role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">1/10</div>
+    </div>
+    <!--progress bar end-->
+    <!--add quotes start-->
+    <form>
+      <div class="form-group">
+        <label for="add_quote"><h1>Add Quote</h1></label>
+        <textarea id="add_quote" cols="10" rows="5" class="form-control" v-model="myQuotes"></textarea>
+      </div>
+      <button type="button" class="btn btn-primary" @click.prevent="createNewQuote">Primary</button>
+    </form>
+    <!--add quotes end-->
+    <!--Quote Listing start-->
+    <app-quote :quotes="quotes"></app-quote>
+    <!--Quote Listing end-->
+    <div class="alert alert-info q-info" style="text-align: center;"><i class="fa fa-star" aria-hidden="true"></i> Click on the quote to delete it</div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  import Quote from './components/Quote.vue';
+  export default {
+    data: function () {
+      return {
+        myQuotes: '',
+        quotes:[]
+      };
+    },
+    components : {
+      appQuote: Quote
+    },
+    methods: {
+      createNewQuote() {
+        this.quotes.push(this.myQuotes);
+        this.myQuotes = '';
+      }
     }
   }
-}
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
+<style scoped>
+  @import url('https://fonts.googleapis.com/css?family=Caveat');
+  .container {
+    margin-top: 60px;
+  }
+  h1 {
+    font-family: Caveat;
+  }
 </style>
