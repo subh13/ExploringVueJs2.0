@@ -2,9 +2,12 @@
   <div id="app" class="container">
     <!--progress bar start-->
     <div class="progress form-group">
-      <div class="progress-bar progress-bar-striped " role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">1/10</div>
+      <div class="progress-bar progress-bar-striped " role="progressbar" :aria-valuenow="(quoteCount+1)*10" aria-valuemin="0" aria-valuemax="100" :style="{width: (quoteCount+1)*10+'%'}">{{quoteCount+1}}/10</div>
     </div>
     <!--progress bar end-->
+    <!--Quote Error if more than 10-->
+    <component :is="selectedComponent"></component>
+    <!--Quote Error if more than 10-->
     <!--add quotes start-->
     <form>
       <div class="form-group">
@@ -23,20 +26,29 @@
 
 <script>
   import Quote from './components/Quote.vue';
+  import QuoteError from './components/QuoteError.vue';
   export default {
     data: function () {
       return {
         myQuotes: '',
-        quotes:[]
+        quotes:[],
+        quoteCount:0,
+        selectedComponent: ''
       };
     },
     components : {
-      appQuote: Quote
+      appQuote: Quote,
+      appQuoteError: QuoteError
     },
     methods: {
       createNewQuote() {
-        this.quotes.push(this.myQuotes);
-        this.myQuotes = '';
+        this.quoteCount = this.quotes.length;
+        if (this.quoteCount+1 <= 10) {
+          this.quotes.push(this.myQuotes);
+          this.myQuotes = '';
+        } else {
+          this.selectedComponent = 'appQuoteError';
+        }
       }
     }
   }
